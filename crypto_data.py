@@ -34,7 +34,7 @@ def main(argv):
     ticker_data = exchange.get_data()
 
     pairs_table = PrettyTable(['Pair', 'Last', 'High', 'Low'])
-    for k, v in ticker_data.items():
+    for k, v in sorted(ticker_data.items()):
         pairs_table.add_row([k, v[0], v[1], v[2]])
 
     print(pairs_table)
@@ -45,7 +45,7 @@ def main(argv):
 
     if (argv.exchange == 'kraken' and current_coins):
         coins_table = PrettyTable(['Coin', 'QTY', 'BTC', 'EUR'])
-        for k, v in current_coins.items():
+        for k, v in sorted(current_coins.items()):
             coins_table.add_row([k, round(v[0], 8), round(v[1], 8), round(v[2], 2)])
             summary = [summary[0]+v[1], summary[1]+v[2]]
 
