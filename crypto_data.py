@@ -1,4 +1,3 @@
-import sys
 import argparse
 
 from kraken_interface import KrakenInterface
@@ -39,19 +38,20 @@ def main(argv):
 
     print(pairs_table)
 
-    current_coins = amount(argv, ticker_data)
+    if (argv.exchange == 'kraken'):
+        current_coins = amount(argv, ticker_data)
 
-    summary = [0.0, 0.0]
+        if (current_coins):
+            summary = [0.0, 0.0]
 
-    if (argv.exchange == 'kraken' and current_coins):
-        coins_table = PrettyTable(['Coin', 'QTY', 'BTC', 'EUR'])
-        for k, v in sorted(current_coins.items()):
-            coins_table.add_row([k, round(v[0], 8), round(v[1], 8), round(v[2], 2)])
-            summary = [summary[0]+v[1], summary[1]+v[2]]
+            coins_table = PrettyTable(['Coin', 'QTY', 'BTC', 'EUR'])
+            for k, v in sorted(current_coins.items()):
+                coins_table.add_row([k, round(v[0], 8), round(v[1], 8), round(v[2], 2)])
+                summary = [summary[0]+v[1], summary[1]+v[2]]
 
-        coins_table.add_row(['', '', '', ''])
-        coins_table.add_row(['', '', round(summary[0], 8), round(summary[1], 2)])
-        print(coins_table)
+            coins_table.add_row(['', '', '', ''])
+            coins_table.add_row(['', '', round(summary[0], 8), round(summary[1], 2)])
+            print(coins_table)
 
 
 if __name__ == "__main__":

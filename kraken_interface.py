@@ -5,9 +5,9 @@ class KrakenInterface:
         'BTC_EUR': 'XXBTZEUR',
         'BTC_USD': 'XXBTZUSD',
         'LTC_BTC': 'XLTCXXBT',
-        'BCH_BCT': 'BCHXBT',
-        'ETH_BCT': 'XETHXXBT',
-        'ETC_BCT': 'XETCXXBT'
+        'BCH_BTC': 'BCHXBT',
+        'ETH_BTC': 'XETHXXBT',
+        'ETC_BTC': 'XETCXXBT'
     }
 
     def __init__(self):
