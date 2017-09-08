@@ -21,9 +21,11 @@ def amount(argv, data):
 
     ret = {}
 
+    ratio = ratio_btc('BTC_EUR') if argv.exchange == 'polo' else float(data['BTC_EUR'][0])
+
     for k, v in coins.items():
         if (v[0] != None):
-            ret[k] = [v[0], v[0]*v[1], v[0]*v[1]*ratio_btc('BTC_EUR')]
+            ret[k] = [v[0], v[0]*v[1], v[0]*v[1]*ratio]
 
     return ret
 
